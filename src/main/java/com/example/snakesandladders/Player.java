@@ -31,4 +31,18 @@ public class Player {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public void setCurrentPosition(int currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
+    public ImageView getPlayerToken() {
+        return playerToken;
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
 }
