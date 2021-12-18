@@ -2,6 +2,7 @@ package com.example.snakesandladders;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class GameBoard {
 
@@ -27,4 +28,19 @@ public class GameBoard {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    public void play(MouseEvent event, int player){
+        this.players[player-1].repeat(event);
+    }
+
+    public void moveTokenByOne(MouseEvent event, int player) {
+        this.players[player-1].moveByOne();
+    }
+
+    public void rollDice(int player) {
+        int dieRoll = dice.roll();
+        this.players[player-1].setCurrentDieRoll(dieRoll);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    
 }
