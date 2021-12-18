@@ -6,10 +6,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snakesandladders.GameController">
    <children>
-      <ImageView fitHeight="700.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="backgroundBoard" fitHeight="700.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../img/gameBoard/board.png" />
          </image>
