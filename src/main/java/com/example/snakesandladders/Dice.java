@@ -53,4 +53,28 @@ public class Dice {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    synchronized private int setNewFace() {
+        // Random number in [min, max)
+        // Math.random() * (max - min)) + min
+        int result = (int)((Math.random() * (this.maximumValue + 1 - this.minimumValue)) + this.minimumValue);
+        System.out.println("Dice: " + result);
+        // Face image for (i) is stored at (i-1)th element
+        this.diceHolder.setImage(faces[result-1]);
+        notify();
+        return result;
+    }
+
+    synchronized public int roll() {
+        try {
+            this.diceHolder.setImage(this.rollAnimation);
+            Thread.sleep(1000);
+        }
+        catch (Exception e){
+            System.out.println("Dice Animation Error");
+        }
+        return setNewFace();
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
 }
