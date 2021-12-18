@@ -70,9 +70,22 @@ public class GameController {
         }
     }
 
+    private void scale(ImageView image, double scalingFactor) {
+        image.setScaleX(scalingFactor);
+        image.setScaleY(scalingFactor);
+    }
+
     private void shiftHelperArrows(int direction) {
         topHelperArrow.setTranslateX(direction * 175);
         bottomHelperArrow.setTranslateX(direction * 175);
+        if (direction == 0) {
+            scale(topHelperArrow, 1);
+            scale(bottomHelperArrow, 1);
+        }
+        else {
+            scale(topHelperArrow, 0.5);
+            scale(bottomHelperArrow, 0.5);
+        }
     }
 
     // -----------------------------------------------------------------------------------------------------------------
