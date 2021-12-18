@@ -40,4 +40,13 @@ public class CoordinateLookup {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    static int[] getCoordinates(int current) {
+        int[] result = new int[2];
+        result[0] = CoordinateLookup.getX(current);
+        result[1] = CoordinateLookup.getY(current);
+        return result;
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
 }
