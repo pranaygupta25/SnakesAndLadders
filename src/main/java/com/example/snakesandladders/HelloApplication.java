@@ -13,6 +13,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Snakes and Ladders | CSE201 Project");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
