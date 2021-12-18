@@ -54,6 +54,28 @@ public class Player {
 
     }
 
+    synchronized void moveByOne() {
+        int[] coordinates = CoordinateLookup.getCoordinates(this.currentPosition);
+        this.playerToken.setTranslateX(coordinates[0]);
+        this.playerToken.setTranslateY(coordinates[1]);
+        notify();
+    }
+
+    synchronized void repeat(MouseEvent event){
+        for (int i = 1; i <= this.currentDieRoll; i++) {
+            try {
+                Thread.sleep(500);
+            }
+            catch (InterruptedException e) {
+                System.out.println("Error while incrementing the steps");
+            }
+            this.currentPosition++;
+            playerToken.fireEvent(event);
+            System.out.println("Current: " + this.currentPosition);
+        }
+        this.currentDieRoll = 0;
+    }
+
     // -----------------------------------------------------------------------------------------------------------------
 
 }
