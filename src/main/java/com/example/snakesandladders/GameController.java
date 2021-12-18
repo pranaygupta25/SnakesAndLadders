@@ -2,6 +2,7 @@ package com.example.snakesandladders;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -73,6 +74,8 @@ public class GameController {
             }
         }.start();
         changeBackground(2);
+        player1mover.setCursor(Cursor.cursor("DEFAULT"));
+        diceButton.setCursor(Cursor.cursor("HAND"));
     }
 
     @FXML
@@ -84,6 +87,8 @@ public class GameController {
             }
         }.start();
         changeBackground(1);
+        player2mover.setCursor(Cursor.cursor("DEFAULT"));
+        diceButton.setCursor(Cursor.cursor("HAND"));
     }
 
     @FXML
@@ -105,13 +110,16 @@ public class GameController {
             @Override public void run() {
                 board.rollDice(activePlayer);
                 if (activePlayer == 1) {
+                    player1mover.setCursor(Cursor.cursor("HAND"));
                     activePlayer = 2;
                 }
                 else {
+                    player2mover.setCursor(Cursor.cursor("HAND"));
                     activePlayer = 1;
                 }
             }
         }.start();
+        diceButton.setCursor(Cursor.cursor("DEFAULT"));
     }
 
     // -----------------------------------------------------------------------------------------------------------------
