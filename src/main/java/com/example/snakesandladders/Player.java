@@ -2,6 +2,7 @@ package com.example.snakesandladders;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class Player {
 
@@ -41,6 +42,10 @@ public class Player {
 
     public ImageView getPlayerToken() {
         return playerToken;
+    }
+
+    public void setCurrentDieRoll(int currentDieRoll) {
+        this.currentDieRoll = currentDieRoll;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
