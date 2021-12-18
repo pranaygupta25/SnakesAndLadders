@@ -7,11 +7,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class GameApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // FXML File Configuration
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(GameApplication.class.getResource("hello-view.fxml"));
         // New scene initialization
         Scene scene = new Scene(fxmlLoader.load());
         // Application Name Configuration
