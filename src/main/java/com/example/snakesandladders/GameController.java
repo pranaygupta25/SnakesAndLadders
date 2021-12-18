@@ -41,6 +41,12 @@ public class GameController {
     private ImageView player2token;
     // On action: moveToken2()
 
+    @FXML
+    private ImageView topHelperArrow;
+
+    @FXML
+    private ImageView bottomHelperArrow;
+
     private GameBoard board;
 
     private int activePlayer;
@@ -64,6 +70,13 @@ public class GameController {
         }
     }
 
+    private void shiftHelperArrows(int direction) {
+        topHelperArrow.setTranslateX(direction * 175);
+        bottomHelperArrow.setTranslateX(direction * 175);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+
     @FXML
     void movePlayer1(MouseEvent event) {
         // Component responsible for event: player1mover
@@ -76,6 +89,7 @@ public class GameController {
         changeBackground(2);
         player1mover.setCursor(Cursor.cursor("DEFAULT"));
         diceButton.setCursor(Cursor.cursor("HAND"));
+        shiftHelperArrows(0);
     }
 
     @FXML
@@ -89,6 +103,7 @@ public class GameController {
         changeBackground(1);
         player2mover.setCursor(Cursor.cursor("DEFAULT"));
         diceButton.setCursor(Cursor.cursor("HAND"));
+        shiftHelperArrows(0);
     }
 
     @FXML
@@ -111,10 +126,12 @@ public class GameController {
                 board.rollDice(activePlayer);
                 if (activePlayer == 1) {
                     player1mover.setCursor(Cursor.cursor("HAND"));
+                    shiftHelperArrows(-1);
                     activePlayer = 2;
                 }
                 else {
                     player2mover.setCursor(Cursor.cursor("HAND"));
+                    shiftHelperArrows(1);
                     activePlayer = 1;
                 }
             }

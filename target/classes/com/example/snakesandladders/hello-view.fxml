@@ -24,7 +24,7 @@
          </image>
       </ImageView>
       <ImageView fx:id="diceHolder" fitHeight="50.0" fitWidth="50.0" layoutX="250.0" layoutY="590.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView blendMode="COLOR_DODGE" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" x="250.0" y="535.0">
+      <ImageView fx:id="topHelperArrow" blendMode="COLOR_DODGE" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" x="250.0" y="535.0">
          <image>
             <Image url="@../../../img/gameBoard/singleArrow.gif" />
          </image>
@@ -34,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ImageView blendMode="COLOR_DODGE" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" x="250.0" y="645.0">
+      <ImageView fx:id="bottomHelperArrow" blendMode="COLOR_DODGE" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" x="250.0" y="645.0">
          <image>
             <Image url="@../../../img/gameBoard/singleArrow.gif" />
          </image>
