@@ -69,6 +69,17 @@ public class GameController {
         }
     }
 
+    private void toggleHelperArrows(boolean state) {
+        if (state) {
+            topHelperArrow.setOpacity(1);
+            bottomHelperArrow.setOpacity(1);
+        }
+        else {
+            topHelperArrow.setOpacity(0);
+            bottomHelperArrow.setOpacity(0);
+        }
+    }
+
     // -----------------------------------------------------------------------------------------------------------------
 
     @FXML
@@ -79,6 +90,7 @@ public class GameController {
             public void run() {
                 board.play(event, 1);
                 shiftOverlay(2);
+                toggleHelperArrows(true);
             }
         }.start();
         diceButton.setCursor(Cursor.cursor("HAND"));
@@ -92,6 +104,7 @@ public class GameController {
             @Override public void run() {
                 board.play(event, 2);
                 shiftOverlay(1);
+                toggleHelperArrows(true);
             }
         }.start();
         diceButton.setCursor(Cursor.cursor("HAND"));
@@ -112,6 +125,7 @@ public class GameController {
     @FXML
     void roll(ActionEvent event) {
         // Component responsible for event: diceButton
+        toggleHelperArrows(false);
         new Thread() {
             @Override public void run() {
                 board.rollDice(activePlayer);
