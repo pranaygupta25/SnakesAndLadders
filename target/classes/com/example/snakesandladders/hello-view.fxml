@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -62,5 +63,11 @@
             <Image url="@../../../img/gameBoard/board.png" />
          </image>
       </ImageView>
+      <Group layoutX="73.0" layoutY="588.0">
+         <children>
+            <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="350.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Group>
    </children>
 </Pane>
