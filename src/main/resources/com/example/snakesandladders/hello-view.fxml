@@ -49,5 +49,10 @@
             <Image url="@../../../img/playerTokens/player2.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="playerOverlay" fitHeight="56.0" fitWidth="163.0" layoutX="315.0" layoutY="587.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/gameBoard/playerOverlay.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

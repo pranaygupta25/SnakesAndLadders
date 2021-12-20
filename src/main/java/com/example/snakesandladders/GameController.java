@@ -4,12 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-
-import java.io.FileInputStream;
 
 public class GameController {
 
@@ -48,6 +45,9 @@ public class GameController {
     @FXML
     private ImageView bottomHelperArrow;
 
+    @FXML
+    private ImageView playerOverlay;
+
     private GameBoard board;
 
     private int activePlayer;
@@ -58,34 +58,14 @@ public class GameController {
         // Is automatically executed while the application launches
         this.board = new GameBoard(player1mover, player1token, player2mover, player2token, diceButton, diceHolder);
         this.activePlayer = 1;
-        changeBackground(1);
     }
 
-    private void changeBackground(int player) {
-        String url = "src/main/resources/img/gameBoard/player" + Integer.toString(player) + ".png";
-        try {
-            backgroundBoard.setImage(new Image(new FileInputStream(url)));
+    private void shiftOverlay(int player) {
+        if (player == 1) {
+            playerOverlay.setTranslateX(0);
         }
-        catch (Exception e){
-            System.out.println("Background Image Switching Error");
-        }
-    }
-
-    private void scale(ImageView image, double scalingFactor) {
-        image.setScaleX(scalingFactor);
-        image.setScaleY(scalingFactor);
-    }
-
-    private void shiftHelperArrows(int direction) {
-        topHelperArrow.setTranslateX(direction * 175);
-        bottomHelperArrow.setTranslateX(direction * 175);
-        if (direction == 0) {
-            scale(topHelperArrow, 1);
-            scale(bottomHelperArrow, 1);
-        }
-        else {
-            scale(topHelperArrow, 0.5);
-            scale(bottomHelperArrow, 0.5);
+        else if (player == 2) {
+            playerOverlay.setTranslateX(-243);
         }
     }
 
@@ -98,10 +78,9 @@ public class GameController {
             @Override
             public void run() {
                 board.play(event, 1);
-                shiftHelperArrows(0);
+                shiftOverlay(2);
             }
         }.start();
-        changeBackground(2);
         diceButton.setCursor(Cursor.cursor("HAND"));
 
     }
@@ -112,10 +91,9 @@ public class GameController {
         new Thread() {
             @Override public void run() {
                 board.play(event, 2);
-                shiftHelperArrows(0);
+                shiftOverlay(1);
             }
         }.start();
-        changeBackground(1);
         diceButton.setCursor(Cursor.cursor("HAND"));
     }
 
@@ -141,12 +119,10 @@ public class GameController {
                         MouseButton.PRIMARY, 1, true, true, true, true, true, true,
                         true, true, true, true, null);
                 if (activePlayer == 1) {
-                    shiftHelperArrows(-1);
                     activePlayer = 2;
                     movePlayer1(newClick);
                 }
                 else {
-                    shiftHelperArrows(1);
                     activePlayer = 1;
                     movePlayer2(newClick);
                 }
