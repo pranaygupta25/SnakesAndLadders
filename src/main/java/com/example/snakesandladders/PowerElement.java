@@ -9,25 +9,28 @@ public class PowerElement {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    protected HashMap<Integer, int[]> positions;
+    protected HashMap<Integer, int[]> destinationCoordinates;
+    protected HashMap<Integer, Integer> destinationTileNumber;
     protected String url;
 
     // -----------------------------------------------------------------------------------------------------------------
 
     protected PowerElement(int[][] startsAndEnds, String url) {
-        this.positions = new HashMap<>();
+        this.destinationCoordinates = new HashMap<>();
+        this.destinationTileNumber = new HashMap<>();
         for (int[] element: startsAndEnds) {
-            this.positions.put(element[0], CoordinateLookup.getCoordinates(element[1]));
+            this.destinationCoordinates.put(element[0], CoordinateLookup.getCoordinates(element[1]));
+            this.destinationTileNumber.put(element[0], element[1]);
         }
         this.url = url;
     }
 
     public boolean isPowerElement(int current) {
-        return this.positions.containsKey(current);
+        return this.destinationCoordinates.containsKey(current);
     }
 
     protected int[] getCoordinates(int current) {
-        return this.positions.get(current);
+        return this.destinationCoordinates.get(current);
     }
 
     protected void playMusic() {
@@ -36,9 +39,13 @@ public class PowerElement {
         mediaPlayer.play();
     }
 
-    public int[] destinationCoordinates(int destination){
+    public int[] destinationCoordinates(int source){
         playMusic();
-        return getCoordinates(destination);
+        return getCoordinates(source);
+    }
+
+    public int destinationTileNumber(int source) {
+        return this.destinationTileNumber.get(source);
     }
 
     // -----------------------------------------------------------------------------------------------------------------

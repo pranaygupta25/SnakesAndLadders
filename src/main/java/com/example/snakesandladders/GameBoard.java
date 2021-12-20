@@ -37,17 +37,20 @@ public class GameBoard {
 
     private void checkForSpecialTiles(int player) {
         int currentPlayerPosition = this.players[player-1].getCurrentPosition();
+        int destinationTile = currentPlayerPosition;
         if (currentPlayerPosition == 100) {
             winnerPopup.setVisible(true);
         }
-        if (ladders.isPowerElement(this.players[player-1].getCurrentPosition())){
-            System.out.println(ladders.destinationCoordinates(currentPlayerPosition));
-
+        int[] destination = CoordinateLookup.getCoordinates(currentPlayerPosition);
+        if (ladders.isPowerElement(currentPlayerPosition)){
+            destination = ladders.destinationCoordinates(currentPlayerPosition);
+            destinationTile = ladders.destinationTileNumber(currentPlayerPosition);
         }
-        if (snakes.isPowerElement(this.players[player-1].getCurrentPosition())){
-            System.out.println(snakes.destinationCoordinates(currentPlayerPosition));
-
+        if (snakes.isPowerElement(currentPlayerPosition)){
+            destination = snakes.destinationCoordinates(currentPlayerPosition);
+            destinationTile = snakes.destinationTileNumber(currentPlayerPosition);
         }
+        this.players[player-1].moveToTile(destinationTile, destination);
     }
 
     public void play(MouseEvent event, int player){

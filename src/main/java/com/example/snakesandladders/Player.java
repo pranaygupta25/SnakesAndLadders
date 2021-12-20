@@ -1,8 +1,10 @@
 package com.example.snakesandladders;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 
 public class Player {
 
@@ -58,8 +60,16 @@ public class Player {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public void moveToCell(int cellNumber) {
-
+    public void moveToTile(int tileNumber, int[] coordinates) {
+        TranslateTransition translate = new TranslateTransition();
+        translate.setNode(this.playerToken);
+        translate.setToX(coordinates[0]);
+        translate.setToY(coordinates[1]);
+        translate.setDuration(Duration.millis(1000));
+        translate.setCycleCount(1);
+        translate.setAutoReverse(false);
+        translate.play();
+        this.currentPosition = tileNumber;
     }
 
     synchronized void moveByOne() {
