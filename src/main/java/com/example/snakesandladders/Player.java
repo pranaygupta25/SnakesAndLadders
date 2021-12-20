@@ -44,6 +44,14 @@ public class Player {
         return playerToken;
     }
 
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void setLocked(boolean locked) {
+        this.locked = locked;
+    }
+
     public void setCurrentDieRoll(int currentDieRoll) {
         this.currentDieRoll = currentDieRoll;
     }

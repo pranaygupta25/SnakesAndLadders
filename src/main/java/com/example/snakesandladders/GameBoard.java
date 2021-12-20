@@ -29,7 +29,8 @@ public class GameBoard {
     // -----------------------------------------------------------------------------------------------------------------
 
     public void play(MouseEvent event, int player){
-        this.players[player-1].repeat(event);
+        if (!(this.players[player-1].isLocked()))
+            this.players[player-1].repeat(event);
     }
 
     public void moveTokenByOne(MouseEvent event, int player) {
@@ -39,6 +40,8 @@ public class GameBoard {
     public void rollDice(int player) {
         int dieRoll = dice.roll();
         this.players[player-1].setCurrentDieRoll(dieRoll);
+        if (dieRoll == 1)
+            this.players[player-1].setLocked(false);
     }
 
     // -----------------------------------------------------------------------------------------------------------------
