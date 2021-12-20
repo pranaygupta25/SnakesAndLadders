@@ -35,20 +35,25 @@ public class GameBoard {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    public void play(MouseEvent event, int player){
-        if (!(this.players[player-1].isLocked()))
-            this.players[player-1].repeat(event);
-        if (this.players[0].getCurrentPosition() == 100 || this.players[1].getCurrentPosition() == 100) {
+    private void checkForSpecialTiles(int player) {
+        int currentPlayerPosition = this.players[player-1].getCurrentPosition();
+        if (currentPlayerPosition == 100) {
             winnerPopup.setVisible(true);
         }
         if (ladders.isPowerElement(this.players[player-1].getCurrentPosition())){
-            System.out.println(ladders.destinationCoordinates(this.players[player-1].getCurrentPosition()));
+            System.out.println(ladders.destinationCoordinates(currentPlayerPosition));
 
         }
         if (snakes.isPowerElement(this.players[player-1].getCurrentPosition())){
-            System.out.println(snakes.destinationCoordinates(this.players[player-1].getCurrentPosition()));
+            System.out.println(snakes.destinationCoordinates(currentPlayerPosition));
 
         }
+    }
+
+    public void play(MouseEvent event, int player){
+        if (!(this.players[player-1].isLocked()))
+            this.players[player-1].repeat(event);
+        checkForSpecialTiles(player);
     }
 
     public void moveTokenByOne(MouseEvent event, int player) {
