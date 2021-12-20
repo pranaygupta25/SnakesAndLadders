@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -48,6 +49,12 @@ public class GameController {
     @FXML
     private ImageView playerOverlay;
 
+    @FXML
+    private Label player1name;
+
+    @FXML
+    private Label player2name;
+
     private GameBoard board;
 
     private int activePlayer;
@@ -58,6 +65,8 @@ public class GameController {
         // Is automatically executed while the application launches
         this.board = new GameBoard(player1mover, player1token, player2mover, player2token, diceButton, diceHolder);
         this.activePlayer = 1;
+        player1name.setText(Scene1Controller.playerName1);
+        player2name.setText(Scene1Controller.playerName2);
     }
 
     private void shiftOverlay(int player) {
