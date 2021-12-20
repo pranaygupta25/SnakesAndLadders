@@ -6,6 +6,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 import java.io.FileInputStream;
@@ -97,12 +98,12 @@ public class GameController {
             @Override
             public void run() {
                 board.play(event, 1);
+                shiftHelperArrows(0);
             }
         }.start();
         changeBackground(2);
-        player1mover.setCursor(Cursor.cursor("DEFAULT"));
         diceButton.setCursor(Cursor.cursor("HAND"));
-        shiftHelperArrows(0);
+
     }
 
     @FXML
@@ -111,12 +112,11 @@ public class GameController {
         new Thread() {
             @Override public void run() {
                 board.play(event, 2);
+                shiftHelperArrows(0);
             }
         }.start();
         changeBackground(1);
-        player2mover.setCursor(Cursor.cursor("DEFAULT"));
         diceButton.setCursor(Cursor.cursor("HAND"));
-        shiftHelperArrows(0);
     }
 
     @FXML
@@ -137,15 +137,18 @@ public class GameController {
         new Thread() {
             @Override public void run() {
                 board.rollDice(activePlayer);
+                MouseEvent newClick = new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0,
+                        MouseButton.PRIMARY, 1, true, true, true, true, true, true,
+                        true, true, true, true, null);
                 if (activePlayer == 1) {
-                    player1mover.setCursor(Cursor.cursor("HAND"));
                     shiftHelperArrows(-1);
                     activePlayer = 2;
+                    movePlayer1(newClick);
                 }
                 else {
-                    player2mover.setCursor(Cursor.cursor("HAND"));
                     shiftHelperArrows(1);
                     activePlayer = 1;
+                    movePlayer2(newClick);
                 }
             }
         }.start();
