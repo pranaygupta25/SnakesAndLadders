@@ -16,14 +16,17 @@ public class GameBoard {
 
     private Dice dice;
 
+    private ImageView winnerPopup;
+
     // -----------------------------------------------------------------------------------------------------------------
 
     public GameBoard(ImageView player1mover, ImageView player1token, ImageView player2mover, ImageView player2token,
-                     Button diceButton, ImageView diceHolder) {
+                     Button diceButton, ImageView diceHolder, ImageView winnerPopup) {
         this.players = new Player[2];
         this.players[0] = new Player(player1mover, player1token);
         this.players[1] = new Player(player2mover, player2token);
         this.dice = new Dice(diceButton, diceHolder);
+        this.winnerPopup = winnerPopup;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -31,6 +34,9 @@ public class GameBoard {
     public void play(MouseEvent event, int player){
         if (!(this.players[player-1].isLocked()))
             this.players[player-1].repeat(event);
+        if (this.players[0].getCurrentPosition() == 100 || this.players[1].getCurrentPosition() == 100) {
+            winnerPopup.setVisible(true);
+        }
     }
 
     public void moveTokenByOne(MouseEvent event, int player) {
@@ -39,6 +45,8 @@ public class GameBoard {
 
     public void rollDice(int player) {
         int dieRoll = dice.roll();
+        if (this.players[player-1].getCurrentPosition() + dieRoll > 100)
+            return;
         this.players[player-1].setCurrentDieRoll(dieRoll);
         if (dieRoll == 1)
             this.players[player-1].setLocked(false);

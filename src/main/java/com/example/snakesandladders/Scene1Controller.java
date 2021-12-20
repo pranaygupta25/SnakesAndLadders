@@ -34,5 +34,4 @@ public class Scene1Controller {
         stage.show();
     }
 
-
 }

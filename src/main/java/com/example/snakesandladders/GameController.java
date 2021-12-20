@@ -55,6 +55,9 @@ public class GameController {
     @FXML
     private Label player2name;
 
+    @FXML
+    private ImageView winnerPopup;
+
     private GameBoard board;
 
     private int activePlayer;
@@ -63,7 +66,7 @@ public class GameController {
 
     public void initialize() {
         // Is automatically executed while the application launches
-        this.board = new GameBoard(player1mover, player1token, player2mover, player2token, diceButton, diceHolder);
+        this.board = new GameBoard(player1mover, player1token, player2mover, player2token, diceButton, diceHolder, winnerPopup);
         this.activePlayer = 1;
         player1name.setText(Scene1Controller.playerName1);
         player2name.setText(Scene1Controller.playerName2);
