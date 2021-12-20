@@ -44,7 +44,7 @@ public class Scene1Controller {
         
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit");
-        alert.setHeaderText("Are you sure you want to exit?");
+        alert.setHeaderText("End current game");
         alert.setContentText("Click OK to exit, or Cancel to stay.");
         if(alert.showAndWait().get() == ButtonType.OK){
             stage = (Stage) exitButton.getScene().getWindow();
@@ -52,5 +52,7 @@ public class Scene1Controller {
     
         }
     }
+
+    
 
 }

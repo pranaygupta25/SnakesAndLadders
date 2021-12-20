@@ -1,18 +1,30 @@
 package com.example.snakesandladders;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class GameController {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    
     @FXML
     private ImageView backgroundBoard;
 
@@ -57,6 +69,9 @@ public class GameController {
 
     @FXML
     private ImageView winnerPopup;
+
+    @FXML
+    private Button exitButton;
 
     private GameBoard board;
 
@@ -156,6 +171,26 @@ public class GameController {
         }.start();
         diceButton.setCursor(Cursor.cursor("DEFAULT"));
     }
+
+    public void moveToScreen1(ActionEvent event) throws IOException{
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit");
+        alert.setHeaderText("Are you sure you want to end current game?");
+        alert.setContentText("Click OK to end current game, or Cancel to stay.");
+        if(alert.showAndWait().get() == ButtonType.OK){
+            
+            Parent root = FXMLLoader.load(getClass().getResource("scene1.fxml"));
+            stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+    
+        }
+        
+    }
+        
+
 
     // -----------------------------------------------------------------------------------------------------------------
 
