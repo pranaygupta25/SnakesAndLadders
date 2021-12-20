@@ -7,6 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -24,6 +27,9 @@ public class Scene1Controller {
     @FXML
     private TextField player2name;
 
+    @FXML
+    private Button exitButton;
+
     public void play(ActionEvent event) throws IOException{
         playerName1 = player1name.getText();
         playerName2 = player2name.getText();
@@ -32,6 +38,19 @@ public class Scene1Controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void exit(ActionEvent event) throws IOException{
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit");
+        alert.setHeaderText("Are you sure you want to exit?");
+        alert.setContentText("Click OK to exit, or Cancel to stay.");
+        if(alert.showAndWait().get() == ButtonType.OK){
+            stage = (Stage) exitButton.getScene().getWindow();
+            stage.close();
+    
+        }
     }
 
 }

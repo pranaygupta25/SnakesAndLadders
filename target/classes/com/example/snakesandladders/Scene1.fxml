@@ -15,7 +15,7 @@
             <Image url="@../../../img/gameBoard/Screenshot%202021-12-20%20000052.png" />
          </image>
       </ImageView>
-      <Button fx:id="clicktoplay" layoutX="218.0" layoutY="506.0" mnemonicParsing="false" onAction="#play" text="Click to play" textFill="#135a5e">
+      <Button fx:id="clicktoplay" layoutX="73.0" layoutY="508.0" mnemonicParsing="false" onAction="#play" text="Click to play" textFill="#135a5e">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -24,5 +24,10 @@
       <TextField fx:id="player2name" layoutX="201.0" layoutY="409.0" />
       <Label layoutX="200.0" layoutY="332.0" text="Player 1:" />
       <Label layoutX="200.0" layoutY="391.0" text="Player 2:" />
+      <Button fx:id="exitButton" layoutX="365.0" layoutY="511.0" mnemonicParsing="false" onAction="#exit" text="Exit game" textFill="#135a5e">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
