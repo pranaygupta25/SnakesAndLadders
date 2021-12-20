@@ -24,7 +24,7 @@ public class GameBoard {
                      Button diceButton, ImageView diceHolder, ImageView winnerPopup) {
         int[][] ladders = {{2, 23}, {8, 12}, {17, 93}, {29, 54}, {32, 51}, {39, 80}, {62, 78}, {70, 89}, {75, 96}};
         this.ladders = new Ladder(ladders);
-        int[][] snakes = {{99, 4}, {92, 76}, {83, 80}, {69, 50}, {59, 37}, {41, 20}, {31, 14}};
+        int[][] snakes = {{99, 4}, {92, 76}, {83, 80}, {69, 50}, {59, 37}, {41, 19}, {31, 14}};
         this.snakes = new Snake(snakes);
         this.players = new Player[2];
         this.players[0] = new Player(player1mover, player1token);
