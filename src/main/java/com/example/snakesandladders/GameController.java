@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -68,7 +69,13 @@ public class GameController {
     private Label player2name;
 
     @FXML
-    private ImageView winnerPopup;
+    private Label winner1Label;
+
+    @FXML
+    private Label winner2Label;
+
+    @FXML
+    private Group winnerPopup;
 
     @FXML
     private Button exitButton;
@@ -81,10 +88,13 @@ public class GameController {
 
     public void initialize() {
         // Is automatically executed while the application launches
-        this.board = new GameBoard(player1mover, player1token, player2mover, player2token, diceButton, diceHolder, winnerPopup);
+        this.board = new GameBoard(player1mover, player1token, player2mover, player2token, diceButton, diceHolder,
+                winnerPopup, winner1Label, winner1Label);
         this.activePlayer = 1;
         player1name.setText(Scene1Controller.playerName1);
         player2name.setText(Scene1Controller.playerName2);
+        winner1Label.setText(Scene1Controller.playerName1 + " Wins!");
+        winner2Label.setText(Scene1Controller.playerName2 + " Wins!");
     }
 
     private void shiftOverlay(int player) {

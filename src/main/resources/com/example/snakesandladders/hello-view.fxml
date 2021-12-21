@@ -59,15 +59,29 @@
             <Image url="@../../../img/gameBoard/playerOverlay.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="winnerPopup" fitHeight="700.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../../img/gameBoard/board.png" />
-         </image>
-      </ImageView>
       <Group layoutX="73.0" layoutY="588.0">
          <children>
             <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="350.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Group>
+      <Group fx:id="winnerPopup" visible="false">
+         <children>
+            <ImageView fitHeight="700.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/screens/winnerOverlay.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="winner1Label" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="355.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" textAlignment="CENTER" textFill="#c9b573" visible="false">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="winner2Label" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="355.0" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" textAlignment="CENTER" textFill="#c9b573" visible="false">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
          </children>
       </Group>
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="15.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
