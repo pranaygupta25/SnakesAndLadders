@@ -1,3 +1,6 @@
 # Ignore target folder
 # [Build files]
 target
+
+# Ignore .class files
+.class
