@@ -14,9 +14,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Scene1Controller {
+
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    // -----------------------------------------------------------------------------------------------------------------
 
     static String playerName1;
     static String playerName2;
@@ -30,7 +33,9 @@ public class Scene1Controller {
     @FXML
     private Button exitButton;
 
-    public void play(ActionEvent event) throws IOException{
+    // -----------------------------------------------------------------------------------------------------------------
+
+    public void play(ActionEvent event) throws IOException {
         playerName1 = player1name.getText();
         playerName2 = player2name.getText();
         Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
@@ -40,19 +45,19 @@ public class Scene1Controller {
         stage.show();
     }
 
-    public void exit(ActionEvent event) throws IOException{
-        
+    public void exit(ActionEvent event) throws IOException {
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit");
         alert.setHeaderText("End current game");
         alert.setContentText("Click OK to exit, or Cancel to stay.");
-        if(alert.showAndWait().get() == ButtonType.OK){
+        if (alert.showAndWait().get() == ButtonType.OK) {
             stage = (Stage) exitButton.getScene().getWindow();
             stage.close();
-    
+
         }
     }
 
-    
+    // -----------------------------------------------------------------------------------------------------------------
 
 }
