@@ -125,13 +125,16 @@ public class GameController {
         new Thread() {
             @Override
             public void run() {
-                board.play(event, 1);
+                int win = board.play(event, 1);
                 shiftOverlay(2);
                 toggleHelperArrows(true);
+                if (win == 1){
+                    winner1Label.setVisible(true);
+                    winnerPopup.setVisible(true);
+                }
             }
         }.start();
         diceButton.setCursor(Cursor.cursor("HAND"));
-
     }
 
     @FXML
@@ -139,9 +142,13 @@ public class GameController {
         // Component responsible for event: player2mover
         new Thread() {
             @Override public void run() {
-                board.play(event, 2);
+                int win = board.play(event, 2);
                 shiftOverlay(1);
                 toggleHelperArrows(true);
+                if (win == 1){
+                    winner2Label.setVisible(true);
+                    winnerPopup.setVisible(true);
+                }
             }
         }.start();
         diceButton.setCursor(Cursor.cursor("HAND"));

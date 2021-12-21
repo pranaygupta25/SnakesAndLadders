@@ -43,17 +43,11 @@ public class GameBoard {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    private void checkForSpecialTiles(int player) {
+    private int checkForSpecialTiles(int player) {
         int currentPlayerPosition = this.players[player-1].getCurrentPosition();
         int destinationTile = currentPlayerPosition;
-        if (currentPlayerPosition == 100) {
-            if (player == 1)
-                winner1Label.setVisible(true);
-            else
-                winner2Label.setVisible(true);
-            winnerPopup.setVisible(true);
-            return;
-        }
+        if (currentPlayerPosition == 100)
+            return 1;
         int[] destination = CoordinateLookup.getCoordinates(currentPlayerPosition);
         if (ladders.isPowerElement(currentPlayerPosition)){
             destination = ladders.destinationCoordinates(currentPlayerPosition);
@@ -64,12 +58,13 @@ public class GameBoard {
             destinationTile = snakes.destinationTileNumber(currentPlayerPosition);
         }
         this.players[player-1].moveToTile(destinationTile, destination);
+        return 0;
     }
 
-    public void play(MouseEvent event, int player){
+    public int play(MouseEvent event, int player){
         if (!(this.players[player-1].isLocked()))
             this.players[player-1].repeat(event);
-        checkForSpecialTiles(player);
+        return checkForSpecialTiles(player);
     }
 
     public void moveTokenByOne(MouseEvent event, int player) {
