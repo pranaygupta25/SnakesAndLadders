@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,24 +10,40 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snakesandladders.Scene1Controller">
    <children>
-      <ImageView fitHeight="350.0" fitWidth="500.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="700.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../img/gameBoard/Screenshot%202021-12-20%20000052.png" />
+            <Image url="@../../../img/screens/entryScreen.png" />
          </image>
       </ImageView>
-      <Button fx:id="clicktoplay" layoutX="73.0" layoutY="508.0" mnemonicParsing="false" onAction="#play" text="Click to play" textFill="#135a5e">
+      <ImageView fitHeight="158.0" fitWidth="150.0" layoutX="200.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/screens/icon.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="clicktoplay" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="199.0" layoutY="434.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#play" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Play Game" textAlignment="CENTER" textFill="#595751">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="Arial Black" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <TextField fx:id="player1name" layoutX="200.0" layoutY="350.0" />
-      <TextField fx:id="player2name" layoutX="201.0" layoutY="409.0" />
-      <Label layoutX="200.0" layoutY="332.0" text="Player 1:" />
-      <Label layoutX="200.0" layoutY="391.0" text="Player 2:" />
-      <Button fx:id="exitButton" layoutX="365.0" layoutY="511.0" mnemonicParsing="false" onAction="#exit" text="Exit game" textFill="#135a5e">
+      <TextField fx:id="player1name" layoutX="223.0" layoutY="316.0" style="-fx-background-color: none;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <TextField fx:id="player2name" layoutX="223.0" layoutY="382.0" style="-fx-background-color: none;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Button fx:id="exitButton" layoutX="15.0" layoutY="635.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exit" opacity="0.0" prefHeight="50.0" prefWidth="50.0" textFill="#135a5e">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </AnchorPane>
