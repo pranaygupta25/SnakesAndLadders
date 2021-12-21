@@ -1,8 +1,6 @@
 package com.example.snakesandladders;
 
-import javafx.scene.Group;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -18,16 +16,10 @@ public class GameBoard {
 
     private Dice dice;
 
-    private Group winnerPopup;
-
-    private Label winner1Label;
-
-    private Label winner2Label;
-
     // -----------------------------------------------------------------------------------------------------------------
 
     public GameBoard(ImageView player1mover, ImageView player1token, ImageView player2mover, ImageView player2token,
-                     Button diceButton, ImageView diceHolder, Group winnerPopup,Label winner1Label, Label winner2Label){
+                     Button diceButton, ImageView diceHolder) {
         int[][] ladders = {{2, 23}, {8, 12}, {17, 93}, {29, 54}, {32, 51}, {39, 80}, {62, 78}, {70, 89}, {75, 96}};
         this.ladders = new Ladder(ladders);
         int[][] snakes = {{99, 4}, {92, 76}, {83, 80}, {69, 50}, {59, 37}, {41, 19}, {31, 14}};
@@ -36,9 +28,6 @@ public class GameBoard {
         this.players[0] = new Player(player1mover, player1token);
         this.players[1] = new Player(player2mover, player2token);
         this.dice = new Dice(diceButton, diceHolder);
-        this.winnerPopup = winnerPopup;
-        this.winner1Label = winner1Label;
-        this.winner2Label = winner2Label;
     }
 
     // -----------------------------------------------------------------------------------------------------------------

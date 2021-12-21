@@ -88,8 +88,7 @@ public class GameController {
 
     public void initialize() {
         // Is automatically executed while the application launches
-        this.board = new GameBoard(player1mover, player1token, player2mover, player2token, diceButton, diceHolder,
-                winnerPopup, winner1Label, winner1Label);
+        this.board = new GameBoard(player1mover, player1token, player2mover, player2token, diceButton, diceHolder);
         this.activePlayer = 1;
         player1name.setText(Scene1Controller.playerName1);
         player2name.setText(Scene1Controller.playerName2);
@@ -204,7 +203,7 @@ public class GameController {
             stage.show();
     
         }
-        
+
     }
 
     // -----------------------------------------------------------------------------------------------------------------
