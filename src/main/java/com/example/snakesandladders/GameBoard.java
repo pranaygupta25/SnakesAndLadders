@@ -8,22 +8,23 @@ public class GameBoard {
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    private final Snake snakes;
+    private final PowerElement[] powerElements;
 
-    private final Ladder ladders;
+    private final Player[] players;
 
-    private Player[] players;
-
-    private Dice dice;
+    private final Dice dice;
 
     // -----------------------------------------------------------------------------------------------------------------
 
     public GameBoard(ImageView player1mover, ImageView player1token, ImageView player2mover, ImageView player2token,
                      Button diceButton, ImageView diceHolder) {
         int[][] ladders = {{2, 23}, {8, 12}, {17, 93}, {29, 54}, {32, 51}, {39, 80}, {62, 78}, {70, 89}, {75, 96}};
-        this.ladders = new Ladder(ladders);
+        Ladder ladders1 = new Ladder(ladders);
         int[][] snakes = {{99, 4}, {92, 76}, {83, 80}, {69, 50}, {59, 37}, {41, 19}, {31, 14}};
-        this.snakes = new Snake(snakes);
+        Snake snakes1 = new Snake(snakes);
+        this.powerElements = new PowerElement[2];
+        this.powerElements[0] = snakes1;
+        this.powerElements[1] = ladders1;
         this.players = new Player[2];
         this.players[0] = new Player(player1mover, player1token);
         this.players[1] = new Player(player2mover, player2token);
@@ -32,21 +33,26 @@ public class GameBoard {
 
     // -----------------------------------------------------------------------------------------------------------------
 
+    private <T extends PowerElement> boolean checkForSnakesAndLadders(int player, int currentPlayerPosition, T element){
+        int destinationTile = currentPlayerPosition;
+        int[] destination = CoordinateLookup.getCoordinates(currentPlayerPosition);
+        if (element.isPowerElement(currentPlayerPosition)){
+            destination = element.destinationCoordinates(currentPlayerPosition);
+            destinationTile = element.destinationTileNumber(currentPlayerPosition);
+            this.players[player-1].moveToTile(destinationTile, destination);
+            return true;
+        }
+        return false;
+    }
+
     private int checkForSpecialTiles(int player) {
         int currentPlayerPosition = this.players[player-1].getCurrentPosition();
-        int destinationTile = currentPlayerPosition;
         if (currentPlayerPosition == 100)
             return 1;
-        int[] destination = CoordinateLookup.getCoordinates(currentPlayerPosition);
-        if (ladders.isPowerElement(currentPlayerPosition)){
-            destination = ladders.destinationCoordinates(currentPlayerPosition);
-            destinationTile = ladders.destinationTileNumber(currentPlayerPosition);
+        for (PowerElement element: this.powerElements) {
+            if(checkForSnakesAndLadders(player, currentPlayerPosition, element))
+                break;
         }
-        if (snakes.isPowerElement(currentPlayerPosition)){
-            destination = snakes.destinationCoordinates(currentPlayerPosition);
-            destinationTile = snakes.destinationTileNumber(currentPlayerPosition);
-        }
-        this.players[player-1].moveToTile(destinationTile, destination);
         return 0;
     }
 
